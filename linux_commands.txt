@@ -1,0 +1,29 @@
+
+
+#securing mysql server after installation
+
+mysql_secure_installation
+
+
+
+#needed for connection on deployed machine
+
+sudo apt-get install openssh-server 
+
+
+#redirecting port 80 to 443
+
+sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport 80 -j REDIRECT --to-port 443
+
+
+
+#needed for backups
+
+mkdir /tmp/backups
+
+crontab -e
+
+#example of line for crontab
+
+0 23 * * * mysqldump -u root db01 -p >/tmp/backups/db01&& scp /tmp/backups/db01 login@bkp-01:\backups\hostname
+
