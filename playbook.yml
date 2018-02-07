@@ -1,0 +1,15 @@
+me: Deploy server
+  hosts: all
+  gather_facts: false
+  become_method: sudo
+  become: True
+  strategy: free
+  tasks:
+  - name: Install list of packages
+    apt: name={{item}} state=installed
+    with_items:
+         - nginx
+         - mysql-server
+         - php-fpm
+         - php-mysql 
+

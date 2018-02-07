@@ -1,0 +1,7 @@
+CREATE DATABASE db01;
+
+use db01;
+
+
+CREATE TABLE info (id MEDIUMINT NOT NULL AUTO_INCREMENT, hostname VARCHAR(20), ip_address VARCHAR(20), user VARCHAR(20), time VARCHAR(50), PRIMARY KEY (id));
+
